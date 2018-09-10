@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">	
+	<title>Document</title>
+</head>
+<body>
+	<form action="">
+        <fieldset>
+            <legend>学生档案</legend>
+            <label>
+                姓名: <input type="text" pattern="{6,10}" name="username" placeholder="请输入姓名" id="username" required autofocus >
+            </label>
+            <label>
+                手机号码: <input type="text" name="mobile" placeholder="请输入手机号" required pattern="^1\d{10}$"  >
+            </label>
+            <label>
+                邮箱地址: <input type="email" name="email" placeholder="请输入邮箱地址" required  >
+            </label>
+            <label>
+                所属学院: <input type="text" name="course" list="course" placeholder="请输入所属学院"  >
+                <datalist id="course">
+                    <option value="前端与移动开发"></option>
+                    <option value="PHP"></option>
+                    <option value="JAVA"></option>
+                    <option value="Android"></option>
+                    <option value="IOS"></option>
+                    <option value="UI设计"></option>
+                    <option value="C++"></option>
+                </datalist>
+            </label>
+            <label>
+                入学成绩: <input id="score" name="score" type="number" min="0" max="100" step="10" value="60"/>
+            </label>
+            <label>
+                基础水平: <meter id="level" name="level" min="0" max="100" low="60" high="80" value="70"></meter>
+            </label>
+            <label>
+                入学日期: <input type="date" value="2016-07-03">
+            </label>
+            <label>
+                毕业时间: <input type="date" value="2016-11-03">
+            </label>
+            <label>
+                课程进度: <progress max="100" value="30"></progress>
+            </label>
+            <input type="submit" value="保存"/>
+        </fieldset>
+    </form>
+    <input type="text" name="txt_text" id="txt_text">
+    <input type="number" name="txt_number" id="txt_number">
+    <input type="email" name="txt_email" id="txt_email">
+    <input type="tel" name="txt_tel" id="txt_tel">
+    <input type="url" name="txt_url" id="txt_url">
+    <input type="search" name="txt_search" id="txt_search"> 在移动端虚拟键盘会有搜索按钮
+    <script>
+        /*获取到姓名元素*/
+        var username = document.getElementById("username");
+        /*如果有提示内容 也会触发这个事件*/
+        username.oninvalid = function(){
+            console.log('oninvalid');
+        };
+
+        /*动态的展示入学成绩的水平*/
+        /*获取到入学成绩这个元素*/
+        var scoreInput = document.getElementById('score');
+        /*水平元素*/
+        var levelMeter = document.getElementById('level');
+
+        /*监听score的值的改变*/
+        scoreInput.oninput = function(){
+            /*怎么样让水平状态改变*/
+            levelMeter.value = this.value;
+        }
+
+    </script>
+</body>
+</html>
